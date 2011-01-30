@@ -2,9 +2,7 @@
 	position: absolute;
 	z-index: 1000;
 
-	/*display:none;*/
-	top:  4px;
-	left: 100px;
+	display:none;
 
 	min-width: 120px;
 
