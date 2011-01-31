@@ -23,8 +23,8 @@
 			// Put the map onto the object
 			this.theMap = opts.map;
 
-			// Keep track of where you clicked, for the callback functions. Start with map center
-			this.clickedLatLng = this.theMap.getCenter();
+			// Keep track of where you clicked, for the callback functions.
+			this.clickedLatLng = null;
 
 			// Create the context menu element
 			this.theMenu = $(document.createElement('div'))
