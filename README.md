@@ -20,33 +20,35 @@ When constructing this class you pass an array of options. Currently the only op
 
 ### Adding items to the menu
 
-To add items to the menu you use the `addItem()` function. It returns the the jQuery object for the list item created.
+To add items to the menu you use the `addItem()` method. It returns the the jQuery object for the list item created.
 
 	var item = menu.addItem('Zoom In', function(map, latLng){
 		map.setZoom( map.getZoom() + 1);
 		map.panTo( latLng );
 	});
 
-You can also add separators by using the `addSep()` function. It _also_ returns the jQuery object of the list item created
+You can also add separators by using the `addSep()` method. It _also_ returns the jQuery object of the list item created
 
 	var separator = menu.addSep();
 
 
 ### Removing items from the menu
 
-As stated above the `addItem()` and `addSep()` functions return the jQuery object of the list item created. So if you can either call the jQuery method `.remove()` or just pass it into the `removeItem()` or `removeSep()`
+As stated above the `addItem()` and `addSep()` methods return the jQuery object of the list item created. So if you can either call the jQuery method `.remove()` or just pass it into the `removeItem()` or `removeSep()`
 
 	menu.removeItem(item);
 
 	menu.removeSep(separator);
 
-You can also remove items and separators by passing a integer. See: http://api.jquery.com/eq/
+You can also remove items and separators by passing a integer. Pass a negive integer to start at the end and work backwards. See: [http://api.jquery.com/eq/](http://api.jquery.com/eq/)
 
 	// Remove the first item
 	menu.removeItem(0);
 
 	// Remove the second to last item
 	menu.removeItem(-2)
+
+Each method filters the list items to the current type. So `.removeSep(3)` will remove the third separator even if there are 5 menu items before it
 
 	// Remove the first separator (even if its not the first list item)
 	menu.removeSep(0);
