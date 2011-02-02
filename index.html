@@ -26,8 +26,7 @@
 		 */
 		var map = new google.maps.Map($('#map_canvas')[0], {
 			center: new google.maps.LatLng(38.42328971470765, -98.74198833593748),
-			zoom: 4,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			zoom: 4
 		});
 
 		/**
@@ -51,37 +50,6 @@
 		menu.addItem('Center Here', function(map, latLng){
 			map.panTo(latLng);
 		});
-
-
-		/**
-		 * Removing menu items
-		 */
-		// addItem() returns the jquery object of the list item
-		var test = menu.addItem('Test Item', function(){
-			alert('Test');
-		});
-
-		// .. so you can remove it by passing the object
-		menu.removeItem(test);
-
-		// .. or you pass the index of what item you want to remove.
-		menu.removeItem(3)
-
-		// .. or just pass the name of the item to search for
-		menu.removeItem('Test Item');
-
-
-		/**
-		 * Removing seperators
-		 */
-		// addSep returns the jquery object of the list item
-		var test = menu.addSep();
-
-		// .. so you can remove it by passing the object
-		menu.removeSep(test)
-
-		// .. or you pass the index of what seperator you want to remove.
-		menu.removeSep(1)
 
 	</script>
 
