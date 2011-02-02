@@ -12,6 +12,9 @@
 
 	/**
 	 * Create the context menu
+	 *
+	 * @param array opts Array of options.
+	 * @todo Menu id needs to be unique, in case of multiple maps and context menus
 	 */
 	function contextMenu(opts)
 	{
@@ -28,7 +31,7 @@
 
 			// Create the context menu element
 			this.theMenu = $(document.createElement('div'))
-				.attr('id', 'contextMenu') 	// todo: needs to be unique, incase of multiple maps and context menus
+				.attr('id', 'contextMenu')
 
 				// .. disable the browser context menu on our context menu
 				.bind('contextmenu', function() { return false; })
@@ -74,6 +77,10 @@
 
 	/**
 	 * Add new items to the context menu
+	 *
+	 * @param string   name     Name of the list item.
+	 * @param function callback Function to run when you click the list item
+	 * @return jQuery           The list item that is created.
 	 */
 	contextMenu.prototype.addItem = function(name, callback)
 	{
@@ -81,9 +88,7 @@
 		var self = this,
 
 			// The name turned into camelCase for use in the li id, and anchor href
-			idName = name.toLowerCase().replace(/(\s)([a-z])/gi, function(match, group1, group2){
-				return group2.toUpperCase().replace(group1,'');
-			}),
+			idName = name.toCamel(),
 
 			// The li element
 			li = $(document.createElement('li'))
@@ -119,6 +124,10 @@
 
 	/**
 	 * Remove one of the items
+	 *
+	 * @param string name The string used to create the list item.
+	 * @param number name The index value of the list item, excluding separators.
+	 * @param jQuery name The jQuery object that is returned by addItem()
 	 */
 	contextMenu.prototype.removeItem = function(item)
 	{
@@ -134,9 +143,7 @@
 		else if (typeof item === 'string')
 		{
 			// The name turned into camelCase for use in the li id
-			var idName = item.toLowerCase().replace(/(\s)([a-z])/gi, function(match, group1, group2){
-				return group2.toUpperCase().replace(group1,'');
-			});
+			var idName = item.toCamel();
 
 			// Find and remove the element
 			this.theMenu.find('#'+idName).remove();
@@ -145,6 +152,8 @@
 
 	/**
 	 * Add a seperators
+	 *
+	 * @return jQuery The list item that is created.
 	 */
 	contextMenu.prototype.addSep = function()
 	{
@@ -161,6 +170,9 @@
 
 	/**
 	 * Remove a seperator
+	 *
+	 * @param number name The index value of the list item. Only seperators.
+	 * @param jQuery name The jQuery object that is returned by addItem()
 	 */
 	contextMenu.prototype.removeSep = function(item)
 	{
@@ -178,4 +190,14 @@
 	// Expose this to the global object
 	window.contextMenu = contextMenu;
 
+	/**
+	 * Convert a string into a 'camelCase' string
+	 *
+	 * @example 'Camel case string'.toCamel() -> 'camelCaseString'
+	 */
+	String.prototype.toCamel = function() {
+		return this.toLowerCase().replace(/(\s)([a-z])/gi, function(match, group1, group2){
+			return group2.toUpperCase().replace(group1,'');
+		});
+	}
 })(window);
