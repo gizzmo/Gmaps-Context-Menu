@@ -31,7 +31,7 @@
 
 			// Create the context menu element
 			this.theMenu = $(document.createElement('div'))
-				.attr('id', 'contextMenu')
+				.attr('class', 'contextMenu')
 
 				// .. disable the browser context menu on our context menu
 				.bind('contextmenu', function() { return false; })

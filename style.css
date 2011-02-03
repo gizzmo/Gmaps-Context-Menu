@@ -1,4 +1,4 @@
-#contextMenu {
+.contextMenu {
 	position: absolute;
 	z-index: 1000;
 
@@ -11,7 +11,7 @@
 
 }
 
-#contextMenu ul {
+.contextMenu ul {
 
 	padding: 3px 0px;
 	margin: 0px;
@@ -19,12 +19,12 @@
 	border: solid 1px #fff;
 }
 
-#contextMenu li {
+.contextMenu li {
 	list-style: none;
 	padding: 0px 1px;
 	margin: 0px;
 }
-#contextMenu a {
+.contextMenu a {
 	display: block;
 	color: #000;
 	text-decoration: none;
@@ -33,14 +33,14 @@
 	padding: 1px 8px;
 }
 
-#contextMenu li.hover a {
+.contextMenu li.hover a {
 	padding: 0px 7px;
 	background-color: #DFE6F5;
 	border: 1px solid #A2C1FA;
 	border-radius:2px;
 }
 
-#contextMenu li.separator div {
+.contextMenu li.separator div {
 	margin: 3px 0px;
 	border-top: solid 1px #ccc;
 	border-bottom: solid 1px #fff;
