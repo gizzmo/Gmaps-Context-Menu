@@ -21,7 +21,7 @@
 		// A way to access 'this' object from inside functions
 		var self = this;
 
-		if (opts.map !== undefined)
+		if ( opts.map !== undefined )
 		{
 			// Put the map onto the object
 			this.theMap = opts.map;
@@ -37,7 +37,7 @@
 				.bind('contextmenu', function() { return false; })
 
 				// .. append a ul list element
-				.append( $(document.createElement('ul')) )
+				.append($(document.createElement('ul')))
 
 				// .. then append it to the map object
 				.appendTo(this.theMap.getDiv());
@@ -93,7 +93,7 @@
 			// The li element
 			li = $(document.createElement('li'))
 				.attr('id', idName)
-				.appendTo( this.theMenu.children().first() );
+				.appendTo(this.theMenu.children().first());
 
 		// the anchor element
 		$(document.createElement('a'))
@@ -132,15 +132,15 @@
 	contextMenu.prototype.removeItem = function(item)
 	{
 		// No need to search for name if its a jquery object
-		if (item instanceof $)
+		if ( item instanceof $ )
 			item.remove();
 
-		else if (typeof item === 'number')
+		else if ( typeof item === 'number' )
 		{
 			// Find all the items elements and remove the one at the specified index
 			this.theMenu.find('li:not(.separator)').eq(item).remove();
 		}
-		else if (typeof item === 'string')
+		else if ( typeof item === 'string' )
 		{
 			// The name turned into camelCase for use in the li id
 			var idName = item.toCamel();
@@ -162,10 +162,10 @@
 			.addClass('separator')
 
 			// .. add a div child
-			.append ( $(document.createElement('div')) )
+			.append($(document.createElement('div')))
 
 			// .. and attached it to the menu ul
-			.appendTo( this.theMenu.children().first() );
+			.appendTo(this.theMenu.children().first());
 	};
 
 	/**
@@ -177,10 +177,10 @@
 	contextMenu.prototype.removeSep = function(item)
 	{
 		// No need to search for name if its a jquery object
-		if (item instanceof $)
+		if ( item instanceof $ )
 			item.remove();
 
-		else if (typeof item === 'number')
+		else if ( typeof item === 'number' )
 		{
 			// Find all the seperator elements and remove the one at the specified index
 			this.theMenu.find('li.separator').eq(item).remove();
