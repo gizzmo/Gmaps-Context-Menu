@@ -63,7 +63,7 @@ Styling
 
 All styling is done via a single `style.css` file. The layout of the html is the following:
 
-	<div id="contextMenu">
+	<div class="contextMenu">
 		<ul>
 			<li id="zoomIn"><a href="#zoomIn">Zoom In</a></li>
 			<li id="zoomOut"><a href="#zoomOut">Zoom Out</a></li>
