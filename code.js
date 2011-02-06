@@ -82,8 +82,15 @@
 	 * @param function callback Function to run when you click the list item
 	 * @return jQuery           The list item that is created.
 	 */
-	contextMenu.prototype.addItem = function(name, callback)
+	contextMenu.prototype.addItem = function(name, loc, callback)
 	{
+		// If no loc was provided
+		if ( typeof loc === 'function')
+		{
+			callback = loc;
+			loc = undefined;
+		}
+
 		// A way to access 'this' object from inside functions
 		var self = this,
 
@@ -92,8 +99,7 @@
 
 			// The li element
 			li = $(document.createElement('li'))
-				.attr('id', idName)
-				.appendTo(this.theMenu.children().first());
+				.attr('id', idName);
 
 		// the anchor element
 		$(document.createElement('a'))
@@ -118,7 +124,15 @@
 				return false;
 			});
 
-		// return the whole list item
+		// If `loc` is a number put the that location
+		if ( typeof loc === 'number' && loc < this.theMenu.find('li').length)
+			this.theMenu.find('li').eq(loc).before(li);
+
+		// .. else appened it to the end
+		else
+			this.theMenu.find('ul').append(li);
+
+		// Return the whole list item
 		return li;
 	};
 
@@ -155,17 +169,25 @@
 	 *
 	 * @return jQuery The list item that is created.
 	 */
-	contextMenu.prototype.addSep = function()
+	contextMenu.prototype.addSep = function(loc)
 	{
-		// Create the li element and return it
-		return $(document.createElement('li'))
+		// Create the li element
+		var li = $(document.createElement('li'))
 			.addClass('separator')
 
 			// .. add a div child
 			.append($(document.createElement('div')))
 
-			// .. and attached it to the menu ul
-			.appendTo(this.theMenu.children().first());
+		// If loc is a number put the li at that location
+		if ( typeof loc === 'number' )
+			this.theMenu.find('li').eq(loc).before(li)
+
+		// .. else appened it to the end
+		else
+			this.theMenu.find('ul').append(li);
+
+		// Return the li element
+		return li
 	};
 
 	/**
