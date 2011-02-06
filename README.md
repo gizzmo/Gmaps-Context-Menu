@@ -44,26 +44,19 @@ Its also the same with separators, cept the only argument is the location
 
 ### Removing items from the menu
 
-As stated above the `addItem()` and `addSep()` methods return the jQuery object of the list item created. So if you can either call the jQuery method `.remove()` or just pass it into the `removeItem()` or `removeSep()`
+As stated above the `addItem()` and `addSep()` methods return a jQuery object of the list item created. So if you can either call the jQuery method `remove()` or just pass it into our `remove()` method.
 
-	menu.removeItem(item);
-
-	menu.removeSep(separator);
-
-You can also remove items and separators by passing a integer. Pass a negive integer to start at the end and work backwards. See: [http://api.jquery.com/eq/](http://api.jquery.com/eq/)
+You can also remove them by passing an zero-based integer identifing its location. Zero-based just means 0 is the first, 1 is the second and so on.
 
 	// Remove the first item
-	menu.removeItem(0);
+	menu.remove(0);
+
+Providing a negative number indicates a position starting from the end of the list, rather than the beginning.
 
 	// Remove the second to last item
-	menu.removeItem(-2)
+	menu.remove(-2)
 
-Each method filters the list items to the current type. So `.removeSep(3)` will remove the third separator even if there are 5 menu items before it
-
-	// Remove the first separator (even if its not the first list item)
-	menu.removeSep(0);
-
-You can also remove items by passing the same name that you used to create the item.
+Lastly you can remove items by passing the same name that you used to create the item.
 
 	menu.removeItem('Zoom In');
 
@@ -82,4 +75,4 @@ All styling is done via a single `style.css` file. The layout of the html is the
 		</ul>
 	</div>
 
-The class `.hover` is added to list items when they are hovered over.
+The class `hover` is added to list items when they are hovered over.
