@@ -137,34 +137,6 @@
 	};
 
 	/**
-	 * Remove one of the items
-	 *
-	 * @param string name The string used to create the list item.
-	 * @param number name The index value of the list item, excluding separators.
-	 * @param jQuery name The jQuery object that is returned by addItem()
-	 */
-	contextMenu.prototype.removeItem = function(item)
-	{
-		// No need to search for name if its a jquery object
-		if ( item instanceof $ )
-			item.remove();
-
-		else if ( typeof item === 'number' )
-		{
-			// Find all the items elements and remove the one at the specified index
-			this.theMenu.find('li:not(.separator)').eq(item).remove();
-		}
-		else if ( typeof item === 'string' )
-		{
-			// The name turned into camelCase for use in the li id
-			var idName = item.toCamel();
-
-			// Find and remove the element
-			this.theMenu.find('#'+idName).remove();
-		}
-	};
-
-	/**
 	 * Add a seperators
 	 *
 	 * @return jQuery The list item that is created.
@@ -191,21 +163,27 @@
 	};
 
 	/**
-	 * Remove a seperator
+	 * Remove a menu list item.
 	 *
-	 * @param number name The index value of the list item. Only seperators.
-	 * @param jQuery name The jQuery object that is returned by addItem()
+	 * @param string name The string used to create the list item.
+	 * @param number name The index value of the list item.
+	 * @param jQuery name The jQuery object that is returned by addItem() or addSep()
 	 */
-	contextMenu.prototype.removeSep = function(item)
+	contextMenu.prototype.remove = function(item)
 	{
 		// No need to search for name if its a jquery object
 		if ( item instanceof $ )
 			item.remove();
 
+		// Find all the elements and remove the one at the specified index
 		else if ( typeof item === 'number' )
+			this.theMenu.find('li').eq(item).remove()
+
+		// Find all the items by the id name and remove them
+		else if ( typeof item === 'string' )
 		{
-			// Find all the seperator elements and remove the one at the specified index
-			this.theMenu.find('li.separator').eq(item).remove();
+			// Find and remove the element
+			this.theMenu.find('#'+item.toCamel()).remove()
 		}
 	};
 
