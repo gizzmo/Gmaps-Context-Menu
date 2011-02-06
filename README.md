@@ -31,6 +31,16 @@ You can also add separators by using the `addSep()` method. It _also_ returns th
 
 	var separator = menu.addSep();
 
+Adding a item specific location is simple. With `addItem()` just make the second argument the location, and the third argument the callback function.
+
+	menu.addItem('First Item', 0, function(){
+		// Click code
+	})
+
+Its also the same with separators, cept the only argument is the location
+
+	menu.addSep(2)
+
 
 ### Removing items from the menu
 
