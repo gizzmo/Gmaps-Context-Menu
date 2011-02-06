@@ -124,11 +124,11 @@
 				return false;
 			});
 
-		// If `loc` is a number put the that location
+		// If `loc` is a number put it at that location
 		if ( typeof loc === 'number' && loc < this.theMenu.find('li').length)
 			this.theMenu.find('li').eq(loc).before(li);
 
-		// .. else appened it to the end
+		// .. else appened it to the end of the menu
 		else
 			this.theMenu.find('ul').append(li);
 
