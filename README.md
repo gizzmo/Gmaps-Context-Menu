@@ -58,7 +58,7 @@ Providing a negative number indicates a position starting from the end of the li
 
 Lastly you can remove items by passing the same name that you used to create the item.
 
-	menu.removeItem('Zoom In');
+	menu.remove('Zoom In');
 
 
 Styling
